@@ -2,6 +2,8 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEyeSlash, faEye } from "@fortawesome/free-solid-svg-icons";
 const SignIn: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -41,9 +43,9 @@ const SignIn: React.FC = () => {
               onClick={() => setShowPassword(!showPassword)}
             >
               {showPassword ? (
-                <span className="text-lg">&#128065;</span>
+                <FontAwesomeIcon icon={faEyeSlash} />
               ) : (
-                <span className="text-lg">&#128064;</span>
+                <FontAwesomeIcon icon={faEye} />
               )}
             </div>
           </div>
@@ -58,14 +60,19 @@ const SignIn: React.FC = () => {
           </div>
           <div className="tex-center flex justify-center mt-5">
             <Link href="/auth/signup" className="text-blue-500 hover:underline">
-              Don't have an account? Sign up
+              Don`t have an account? Sign up
             </Link>
           </div>
         </form>
       </div>
 
       <div className="hidden flex-1 bg-gray-300 sm:w-3/5 sm:flex items-center justify-center">
-        <Image src="/auth-image.jpg" alt="Some description" className="w-2/3" />
+        <Image
+          src="/auth-image.jpg"
+          alt="Some description"
+          width={500}
+          height={500}
+        />
       </div>
 
       <div className="flex-1 bg-gray-300 sm:hidden"></div>

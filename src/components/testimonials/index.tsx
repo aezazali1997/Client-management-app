@@ -42,7 +42,7 @@ const Testimonial = () => {
                   src={testimonial.image}
                   alt={testimonial.name}
                 />
-                <p className="italic mb-4">"{testimonial.quote}"</p>
+                <p className="italic mb-4">`{testimonial.quote}`</p>
                 <h3 className="text-lg font-bold">{testimonial.name}</h3>
                 <p className="text-gray-500">{testimonial.role}</p>
               </div>
