@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 const Testimonial = () => {
@@ -36,7 +37,7 @@ const Testimonial = () => {
               className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-4"
             >
               <div className="bg-white p-8 rounded-lg shadow-md">
-                <img
+                <Image
                   className="w-16 h-16 rounded-full mx-auto mb-4"
                   src={testimonial.image}
                   alt={testimonial.name}

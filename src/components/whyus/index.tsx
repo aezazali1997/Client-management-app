@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 const reasons = [
@@ -34,7 +35,7 @@ const WhyUs = () => {
             <div key={reason.id} className="w-full md:w-1/2 lg:w-1/3 p-4">
               <div className="bg-white flex flex-col md:flex-row rounded-lg shadow-md p-8 mb-8">
                 <div className="w-full md:w-1/2">
-                  <img
+                  <Image
                     className="w-full h-48 object-cover mb-4 md:mb-0 rounded"
                     src={reason.image}
                     alt={reason.title}

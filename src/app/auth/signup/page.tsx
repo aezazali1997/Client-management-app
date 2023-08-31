@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 const SignUp: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col sm:flex-row">
@@ -73,7 +74,7 @@ const SignUp: React.FC = () => {
       </div>
 
       <div className="hidden flex-1 bg-gray-300 sm:w-3/5 sm:flex items-center justify-center">
-        <img src="/auth-image.jpg" alt="Some description" className="w-2/3" />
+        <Image src="/auth-image.jpg" alt="Some description" className="w-2/3" />
       </div>
 
       <div className="flex-1 bg-gray-300 sm:hidden"></div>
