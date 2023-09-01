@@ -39,6 +39,8 @@ const WhyUs = () => {
                     className="w-full h-48 object-cover mb-4 md:mb-0 rounded"
                     src={reason.image}
                     alt={reason.title}
+                    width={250}
+                    height={250}
                   />
                 </div>
                 <div className="w-full md:w-1/2 flex flex-col justify-center p-4">

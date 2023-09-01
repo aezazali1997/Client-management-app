@@ -8,7 +8,7 @@ const Testimonial = () => {
       name: "Jane Doe",
       role: "CEO, ExampleCorp",
       quote: "This is an excellent product, I can't live without it!",
-      image: "./Chalvonna-Smith-150x150.jpeg",
+      image: "/Chalvonna-Smith-150x150.jpeg",
     },
     {
       id: 2,
@@ -22,7 +22,7 @@ const Testimonial = () => {
       name: "Emily Johnson",
       role: "CMO, YetAnotherExample",
       quote: "Five stars, this is exactly what I was looking for.",
-      image: "Monica-A.-Clem-Ph.D.-150x150.jpeg",
+      image: "/Monica-A.-Clem-Ph.D.-150x150.jpeg",
     },
   ];
 
@@ -41,6 +41,8 @@ const Testimonial = () => {
                   className="w-16 h-16 rounded-full mx-auto mb-4"
                   src={testimonial.image}
                   alt={testimonial.name}
+                  width={250}
+                  height={250}
                 />
                 <p className="italic mb-4">`{testimonial.quote}`</p>
                 <h3 className="text-lg font-bold">{testimonial.name}</h3>

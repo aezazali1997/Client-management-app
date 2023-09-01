@@ -52,14 +52,17 @@ const SignIn: React.FC = () => {
           <div className="flex justify-center">
             <button
               type="submit"
-              className="p-2 bg-blue-500 text-white rounded w-32"
+              className="p-2 bg-green-500 text-white rounded w-32"
             >
               Submit
             </button>
             <hr />
           </div>
           <div className="tex-center flex justify-center mt-5">
-            <Link href="/auth/signup" className="text-blue-500 hover:underline">
+            <Link
+              href="/auth/signup"
+              className="text-black-500 hover:underline"
+            >
               Don`t have an account? Sign up
             </Link>
           </div>

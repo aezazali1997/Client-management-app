@@ -12,6 +12,8 @@ const Navbar = () => {
               src="/new-logo.svg"
               alt="Logo"
               className="w-16 h-16 cursor-pointer"
+              width={40}
+              height={40}
             />
           </Link>
         </div>
