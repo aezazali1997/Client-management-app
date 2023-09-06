@@ -21,13 +21,13 @@ const Navbar = () => {
         <div className="flex space-x-6 h-12 ">
           <Link
             href="/auth/signin"
-            className="px-4 py-3 rounded text-green-300 border-2 border-green-200 border-solid"
+            className="px-4 rounded text-green-300 border-2 border-green-200 border-solid flex justify-center items-center"
           >
             Sign In
           </Link>
           <Link
             href="/auth/signup"
-            className="px-4 py-3 text-white rounded bg-green-600"
+            className="px-4 text-white rounded bg-green-600 flex justify-center items-center"
           >
             Sign Up
           </Link>
