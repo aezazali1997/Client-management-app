@@ -5,7 +5,7 @@ import { faker } from "@faker-js/faker";
 import { useTheme } from "@mui/material/styles";
 import { Grid, Container, Typography } from "@mui/material";
 // components
-import { Iconify } from "@/components/iconify";
+import Iconify from "@/components/iconify";
 import AppOrderTimeline from "@/components/OrderTimeline";
 import AppCurrentVisits from "@/components/CurrentVisists";
 import AppWebsiteVisits from "@/components/WebiteVisits";

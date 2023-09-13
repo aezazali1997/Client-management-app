@@ -6,8 +6,6 @@ import { Box } from "@mui/material";
 //
 import { StyledLabel } from "./styles";
 
-// ----------------------------------------------------------------------
-
 const Label = forwardRef(
   (
     {
@@ -51,6 +49,8 @@ const Label = forwardRef(
     );
   }
 );
+
+Label.displayName = "Label";
 
 Label.propTypes = {
   sx: PropTypes.object,

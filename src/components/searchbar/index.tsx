@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 // utils
 import { bgBlur } from "../../../utils/cssStyles";
-import { Iconify } from "../iconify";
+import  Iconify  from "../iconify";
 
 // ----------------------------------------------------------------------
 

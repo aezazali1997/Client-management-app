@@ -25,7 +25,7 @@ import {
 } from "@mui/material";
 // components
 import Label from "@/components/label";
-import { Iconify } from "@/components/iconify";
+import Iconify from "@/components/iconify";
 import Scrollbar from "@/components/scrollbar";
 // sections
 import { UserListHead, UserListToolbar } from "@/components/user";
@@ -209,8 +209,8 @@ export default function User() {
                         avatarUrl,
                         isVerified,
                       } = row;
-                      const name: never = row.name;
-                      const selectedUser = selected.indexOf(name) !== -1;
+                      const name = row.name;
+                      const selectedUser = false;
 
                       return (
                         <TableRow
@@ -220,13 +220,6 @@ export default function User() {
                           role="checkbox"
                           selected={selectedUser}
                         >
-                          <TableCell padding="checkbox">
-                            <Checkbox
-                              checked={selectedUser}
-                              onChange={(event) => handleClick(event, name)}
-                            />
-                          </TableCell>
-
                           <TableCell component="th" scope="row" padding="none">
                             <Stack
                               direction="row"
