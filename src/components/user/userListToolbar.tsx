@@ -1,3 +1,4 @@
+"use client";
 import PropTypes from "prop-types";
 // @mui
 import { styled, alpha } from "@mui/material/styles";
@@ -10,7 +11,7 @@ import {
   InputAdornment,
 } from "@mui/material";
 // component
-import Iconify  from "@/components/iconify";
+import Iconify from "@/components/iconify";
 
 // ----------------------------------------------------------------------
 
