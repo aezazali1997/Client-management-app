@@ -4,9 +4,9 @@ import { sample } from 'lodash';
 // ----------------------------------------------------------------------
 
 const users = [...Array(24)].map((_, index) => ({
-  id: faker.datatype.uuid(),
+  id: "12312312",
   avatarUrl: `/assets/images/avatars/avatar_${index + 1}.jpg`,
-  name: faker.name.fullName(),
+  name: "Dumnmy name",
   company: faker.company.name(),
   isVerified: faker.datatype.boolean(),
   status: sample(['active', 'banned']),

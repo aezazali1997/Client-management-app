@@ -24,6 +24,7 @@ AppWidgetSummary.propTypes = {
   title: PropTypes.string.isRequired,
   total: PropTypes.number.isRequired,
   sx: PropTypes.object,
+  bgColor: PropTypes.string,
 };
 
 export default function AppWidgetSummary({
@@ -31,6 +32,7 @@ export default function AppWidgetSummary({
   total,
   icon,
   color = "primary",
+  bgColor,
   sx,
   ...other
 }: any) {
@@ -40,8 +42,8 @@ export default function AppWidgetSummary({
         py: 5,
         boxShadow: 0,
         textAlign: "center",
-        color: (theme: any) => theme.palette[color].darker,
-        bgcolor: (theme: any) => theme.palette[color].lighter,
+        color: (theme: any) => theme.palette[color].dark,
+        bgcolor: bgColor,
         ...sx,
       }}
       {...other}

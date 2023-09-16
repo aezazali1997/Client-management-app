@@ -1,7 +1,6 @@
 "use client";
 import PropTypes from "prop-types";
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
 // @mui
 import { styled, alpha } from "@mui/material/styles";
 import {
@@ -32,16 +31,7 @@ const StyledAccount = styled("div")(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function Nav({ openNav, onCloseNav }: any) {
-  const { pathname } = useLocation();
-
   const isDesktop = useResponsive("up", "lg");
-
-  useEffect(() => {
-    if (openNav) {
-      onCloseNav();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pathname]);
 
   const renderContent = (
     <Scrollbar

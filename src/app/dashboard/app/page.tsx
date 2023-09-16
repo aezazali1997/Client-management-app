@@ -1,5 +1,4 @@
 "use client";
-import { Helmet } from "react-helmet-async";
 import { faker } from "@faker-js/faker";
 // @mui
 import { useTheme } from "@mui/material/styles";
@@ -14,7 +13,7 @@ import AppWidgetSummary from "@/components/widgetSummary";
 import AppCurrentSubject from "@/components/currentSubject";
 import AppConversionRates from "@/components/conversionRate";
 
-export default function App() {
+function App() {
   const theme = useTheme();
 
   return (
@@ -29,6 +28,7 @@ export default function App() {
             <AppWidgetSummary
               title="Weekly Clients"
               total={714000}
+              bgColor="#d1e9fc"
               icon={"ant-design:android-filled"}
             />
           </Grid>
@@ -37,7 +37,8 @@ export default function App() {
             <AppWidgetSummary
               title="Total Clients"
               total={1352831}
-              color="info"
+              bgColor={"#d0f2ff"}
+              color={"info"}
               icon={"ant-design:apple-filled"}
             />
           </Grid>
@@ -46,6 +47,7 @@ export default function App() {
             <AppWidgetSummary
               title="Clients Joined"
               total={17315}
+              bgColor={"#fff7cd"}
               color="warning"
               icon={"ant-design:windows-filled"}
             />
@@ -56,11 +58,12 @@ export default function App() {
               title="Clients Left"
               total={234}
               color="error"
+              bgColor={"#ffe7d9"}
               icon={"ant-design:bug-filled"}
             />
           </Grid>
 
-          <Grid item xs={12} md={6} lg={8}>
+          <Grid item xs={12} md={6} lg={12}>
             <AppWebsiteVisits
               title="Website Visits"
               subheader="(+43%) than last year"
@@ -96,24 +99,6 @@ export default function App() {
                   fill: "solid",
                   data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39],
                 },
-              ]}
-            />
-          </Grid>
-
-          <Grid item xs={12} md={6} lg={4}>
-            <AppCurrentVisits
-              title="Current Visits"
-              chartData={[
-                { label: "America", value: 4344 },
-                { label: "Asia", value: 5435 },
-                { label: "Europe", value: 1443 },
-                { label: "Africa", value: 4443 },
-              ]}
-              chartColors={[
-                theme.palette.primary.main,
-                theme.palette.info.main,
-                theme.palette.warning.main,
-                theme.palette.error.main,
               ]}
             />
           </Grid>
@@ -163,7 +148,7 @@ export default function App() {
             <AppOrderTimeline
               title="Order Timeline"
               list={[...Array(5)].map((_, index) => ({
-                id: faker.datatype.uuid(),
+                id: "23423423",
                 title: [
                   "1983, orders, $4220",
                   "12 Invoices have been paid",
@@ -172,7 +157,7 @@ export default function App() {
                   "New order placed #XF-2346",
                 ][index],
                 type: `order${index + 1}`,
-                time: faker.date.past(),
+                time: new Date(),
               }))}
             />
           </Grid>
@@ -233,3 +218,4 @@ export default function App() {
     </>
   );
 }
+export default App;

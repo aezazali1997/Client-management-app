@@ -2,7 +2,6 @@
 import Nav from "@/components/sidebar";
 import { styled } from "@mui/material";
 import { useEffect, useState } from "react";
-import { BrowserRouter } from "react-router-dom";
 
 export default function RootLayout({
   children,
@@ -15,12 +14,10 @@ export default function RootLayout({
   };
   return (
     <html lang="en">
-      <BrowserRouter>
+      <body>
         <Nav openNav={openNav} onCloseNav={onCloseNav} />
-        <body style={{ marginLeft: "20rem", marginTop: "2rem" }}>
-          {children}
-        </body>
-      </BrowserRouter>
+        <div style={{ marginLeft: "20rem", marginTop: "2rem" }}>{children}</div>
+      </body>
     </html>
   );
 }

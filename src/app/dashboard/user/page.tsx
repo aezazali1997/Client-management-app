@@ -1,80 +1,77 @@
 "use client";
-// import { filter } from "lodash";
-// import { sentenceCase } from "change-case";
+import { filter } from "lodash";
+import { sentenceCase } from "change-case";
 import { useState } from "react";
-// @mui
-// import {
-//   Card,
-//   Table,
-//   Stack,
-//   Paper,
-//   Avatar,
-//   Button,
-//   Popover,
-//   Checkbox,
-//   TableRow,
-//   MenuItem,
-//   TableBody,
-//   TableCell,
-//   Container,
-//   Typography,
-//   IconButton,
-//   TableContainer,
-//   TablePagination,
-// } from "@mui/material";
-// // components
-// import Label from "@/components/label";
-// import Iconify from "@/components/iconify";
-// import Scrollbar from "@/components/scrollbar";
-// // sections
-// import { UserListHead, UserListToolbar } from "@/components/user";
-// // mock
-// import USERLIST from "@/components/user/mock";
+import {
+  Card,
+  Table,
+  Stack,
+  Paper,
+  Avatar,
+  Button,
+  Popover,
+  Checkbox,
+  TableRow,
+  MenuItem,
+  TableBody,
+  TableCell,
+  Container,
+  Typography,
+  IconButton,
+  TableContainer,
+  TablePagination,
+} from "@mui/material";
+// components
+import Label from "@/components/label";
+import Iconify from "@/components/iconify";
+import Scrollbar from "@/components/scrollbar";
+// sections
+import { UserListHead, UserListToolbar } from "@/components/user";
+// mock
+import USERLIST from "@/components/user/mock";
+
+const TABLE_HEAD = [
+  { id: "name", label: "Name", alignRight: false },
+  { id: "company", label: "Company", alignRight: false },
+  { id: "role", label: "Role", alignRight: false },
+  { id: "isVerified", label: "Verified", alignRight: false },
+  { id: "status", label: "Status", alignRight: false },
+  { id: "" },
+];
 
 // ----------------------------------------------------------------------
 
-// const TABLE_HEAD = [
-//   { id: "name", label: "Name", alignRight: false },
-//   { id: "company", label: "Company", alignRight: false },
-//   { id: "role", label: "Role", alignRight: false },
-//   { id: "isVerified", label: "Verified", alignRight: false },
-//   { id: "status", label: "Status", alignRight: false },
-//   { id: "" },
-// ];
+function descendingComparator(a: any, b: any, orderBy: any) {
+  if (b[orderBy] < a[orderBy]) {
+    return -1;
+  }
+  if (b[orderBy] > a[orderBy]) {
+    return 1;
+  }
+  return 0;
+}
 
-// // ----------------------------------------------------------------------
+function getComparator(order: string, orderBy: any) {
+  return order === "desc"
+    ? (a: any, b: any) => descendingComparator(a, b, orderBy)
+    : (a: any, b: any) => -descendingComparator(a, b, orderBy);
+}
 
-// function descendingComparator(a: any, b: any, orderBy: any) {
-//   if (b[orderBy] < a[orderBy]) {
-//     return -1;
-//   }
-//   if (b[orderBy] > a[orderBy]) {
-//     return 1;
-//   }
-//   return 0;
-// }
-
-// function getComparator(order: string, orderBy: any) {
-//   return order === "desc"
-//     ? (a: any, b: any) => descendingComparator(a, b, orderBy)
-//     : (a: any, b: any) => -descendingComparator(a, b, orderBy);
-// }
-
-// function applySortFilter(array: any, comparator: any, query: any) {
-//   const stabilizedThis = array.map((el: any, index: number) => [el, index]);
-//   stabilizedThis.sort((a: any, b: any) => {
-//     const order = comparator(a[0], b[0]);
-//     if (order !== 0) return order;
-//     return a[1] - b[1];
-//   });
-//   if (query) {
-//     return filter(
-//       array,
-//       (_user) => _user.name.toLowerCase().indexOf(query.toLowerCase()) !== -1
-//     );
-//   }
-//   return stabilizedThis.map((el: any) => el[0]);
-// }
+function applySortFilter(array: any, comparator: any, query: any) {
+  const stabilizedThis = array.map((el: any, index: number) => [el, index]);
+  stabilizedThis.sort((a: any, b: any) => {
+    const order = comparator(a[0], b[0]);
+    if (order !== 0) return order;
+    return a[1] - b[1];
+  });
+  if (query) {
+    return filter(
+      array,
+      (_user) => _user.name.toLowerCase().indexOf(query.toLowerCase()) !== -1
+    );
+  }
+  return stabilizedThis.map((el: any) => el[0]);
+}
 
 export default function User() {
   const [open, setOpen] = useState(null);
@@ -99,38 +96,38 @@ export default function User() {
     setOpen(null);
   };
 
-  // const handleRequestSort = (event: any, property: any) => {
-  //   const isAsc = orderBy === property && order === "asc";
-  //   setOrder(isAsc ? "desc" : "asc");
-  //   setOrderBy(property);
-  // };
+  const handleRequestSort = (event: any, property: any) => {
+    const isAsc = orderBy === property && order === "asc";
+    setOrder(isAsc ? "desc" : "asc");
+    setOrderBy(property);
+  };
 
-  // const handleSelectAllClick = (event: any) => {
-  //   if (event.target.checked) {
-  //     const newSelecteds: any = USERLIST.map((n) => n.name);
-  //     setSelected(newSelecteds);
-  //     return;
-  //   }
-  //   setSelected([]);
-  // };
+  const handleSelectAllClick = (event: any) => {
+    if (event.target.checked) {
+      const newSelecteds: any = USERLIST.map((n) => n.name);
+      setSelected(newSelecteds);
+      return;
+    }
+    setSelected([]);
+  };
 
-  // const handleClick = (event: any, name: never) => {
-  //   const selectedIndex = selected.indexOf(name);
-  //   let newSelected: any = [];
-  //   if (selectedIndex === -1) {
-  //     newSelected = newSelected.concat(selected, name);
-  //   } else if (selectedIndex === 0) {
-  //     newSelected = newSelected.concat(selected.slice(1));
-  //   } else if (selectedIndex === selected.length - 1) {
-  //     newSelected = newSelected.concat(selected.slice(0, -1));
-  //   } else if (selectedIndex > 0) {
-  //     newSelected = newSelected.concat(
-  //       selected.slice(0, selectedIndex),
-  //       selected.slice(selectedIndex + 1)
-  //     );
-  //   }
-  //   setSelected(newSelected);
-  // };
+  const handleClick = (event: any, name: never) => {
+    const selectedIndex = selected.indexOf(name);
+    let newSelected: any = [];
+    if (selectedIndex === -1) {
+      newSelected = newSelected.concat(selected, name);
+    } else if (selectedIndex === 0) {
+      newSelected = newSelected.concat(selected.slice(1));
+    } else if (selectedIndex === selected.length - 1) {
+      newSelected = newSelected.concat(selected.slice(0, -1));
+    } else if (selectedIndex > 0) {
+      newSelected = newSelected.concat(
+        selected.slice(0, selectedIndex),
+        selected.slice(selectedIndex + 1)
+      );
+    }
+    setSelected(newSelected);
+  };
 
   const handleChangePage = (event: any, newPage: any) => {
     setPage(newPage);
@@ -146,21 +143,20 @@ export default function User() {
     setFilterName(event.target.value);
   };
 
-  // const emptyRows =
-  //   page > 0 ? Math.max(0, (1 + page) * rowsPerPage - USERLIST.length) : 0;
+  const emptyRows =
+    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - USERLIST.length) : 0;
 
-  // const filteredUsers = applySortFilter(
-  //   USERLIST,
-  //   getComparator(order, orderBy),
-  //   filterName
-  // );
+  const filteredUsers = applySortFilter(
+    USERLIST,
+    getComparator(order, orderBy),
+    filterName
+  );
 
-  // const isNotFound = !filteredUsers.length && !!filterName;
+  const isNotFound = !filteredUsers.length && !!filterName;
 
   return (
     <>
-      <div>user</div>
-      {/* <Container>
+      <Container>
         <Stack
           direction="row"
           alignItems="center"
@@ -337,7 +333,7 @@ export default function User() {
           <Iconify icon={"eva:trash-2-outline"} sx={{ mr: 2 }} />
           Delete
         </MenuItem>
-      </Popover> */}
+      </Popover>
     </>
   );
 }

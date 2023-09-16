@@ -1,12 +1,11 @@
 import PropTypes from "prop-types";
-import ReactApexChart from "react-apexcharts";
-// @mui
+import dynamic from "next/dynamic";
+const ReactApexChart = dynamic(() => import("react-apexcharts"), {
+  ssr: false,
+});
 import { styled } from "@mui/material/styles";
 import { Card, CardHeader } from "@mui/material";
-// components
 import { useChart } from "../chart";
-
-// ----------------------------------------------------------------------
 
 const CHART_HEIGHT = 392;
 

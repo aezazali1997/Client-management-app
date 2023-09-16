@@ -1,11 +1,12 @@
 import PropTypes from "prop-types";
-import ReactApexChart from "react-apexcharts";
-// @mui
-import { Card, CardHeader, Box } from "@mui/material";
-// components
-import { useChart } from "../chart";
+import dynamic from "next/dynamic";
 
-// ----------------------------------------------------------------------
+const ReactApexChart = dynamic(() => import("react-apexcharts"), {
+  ssr: false,
+});
+
+import { Card, CardHeader, Box } from "@mui/material";
+import { useChart } from "../chart";
 
 AppWebsiteVisits.propTypes = {
   title: PropTypes.string,

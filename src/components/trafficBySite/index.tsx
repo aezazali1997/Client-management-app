@@ -1,4 +1,3 @@
-// @mui
 import PropTypes from "prop-types";
 import {
   Box,
@@ -8,10 +7,7 @@ import {
   CardHeader,
   CardContent,
 } from "@mui/material";
-// utils
 import { fShortenNumber } from "../../../utils/formatNumber";
-
-// ----------------------------------------------------------------------
 
 AppTrafficBySite.propTypes = {
   title: PropTypes.string,

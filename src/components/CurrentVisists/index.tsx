@@ -1,14 +1,14 @@
 import PropTypes from "prop-types";
-import ReactApexChart from "react-apexcharts";
+import dynamic from "next/dynamic";
+
+const ReactApexChart = dynamic(() => import("react-apexcharts"), {
+  ssr: false,
+});
 // @mui
 import { useTheme, styled } from "@mui/material/styles";
 import { Card, CardHeader } from "@mui/material";
-// utils
 import { fNumber } from "../../../utils/formatNumber";
-// components
 import { useChart } from "../chart";
-
-// ----------------------------------------------------------------------
 
 const CHART_HEIGHT = 372;
 const LEGEND_HEIGHT = 72;
@@ -28,8 +28,6 @@ const StyledChartWrapper = styled("div")(({ theme }) => ({
     top: `calc(${CHART_HEIGHT - LEGEND_HEIGHT}px) !important`,
   },
 }));
-
-// ----------------------------------------------------------------------
 
 AppCurrentVisits.propTypes = {
   title: PropTypes.string,
@@ -76,12 +74,7 @@ export default function AppCurrentVisits({
       <CardHeader title={title} subheader={subheader} />
 
       <StyledChartWrapper dir="ltr">
-        <ReactApexChart
-          type="pie"
-          series={chartSeries}
-          options={chartOptions}
-          height={280}
-        />
+        <ReactApexChart type="pie" series={chartSeries} height={280} />
       </StyledChartWrapper>
     </Card>
   );
