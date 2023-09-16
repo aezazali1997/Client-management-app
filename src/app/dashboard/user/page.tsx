@@ -3,6 +3,14 @@ import { filter } from "lodash";
 import { sentenceCase } from "change-case";
 import { useState } from "react";
 import {
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  TextField,
+} from "@mui/material";
+
+import {
   Card,
   Table,
   Stack,
@@ -74,6 +82,31 @@ function applySortFilter(array: any, comparator: any, query: any) {
 }
 
 export default function User() {
+  const [isModalOpen, setModalOpen] = useState(false);
+
+  const [email, setEmail] = useState("");
+  const [isEmailValid, setEmailValid] = useState(true);
+
+  const validateEmail = (email: any) => {
+    // Simple regex for email validation
+    const re =
+      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+  };
+
+  const handleEmailChange = (e: any) => {
+    const emailValue = e.target.value;
+    setEmail(emailValue);
+    setEmailValid(validateEmail(emailValue));
+  };
+
+  const handleModalOpen = () => {
+    setModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setModalOpen(false);
+  };
   const [open, setOpen] = useState(null);
 
   const [page, setPage] = useState(0);
@@ -167,8 +200,9 @@ export default function User() {
             Clients
           </Typography>
           <Button
-            variant="contained"
             startIcon={<Iconify icon="eva:plus-fill" />}
+            variant="outlined"
+            onClick={handleModalOpen}
           >
             Add Client
           </Button>
@@ -304,6 +338,58 @@ export default function User() {
             onRowsPerPageChange={handleChangeRowsPerPage}
           />
         </Card>
+        <Dialog
+          open={isModalOpen}
+          onClose={handleModalClose}
+          aria-labelledby="form-dialog-title"
+        >
+          <DialogTitle id="form-dialog-title">Add Client</DialogTitle>
+          <DialogContent>
+            <TextField
+              autoFocus
+              margin="dense"
+              id="name"
+              label="First Name"
+              type="text"
+              fullWidth
+            />
+            <TextField
+              margin="dense"
+              id="lastname"
+              label="Last Name"
+              type="text"
+              fullWidth
+            />
+            <TextField
+              margin="dense"
+              id="email"
+              label="Email Address"
+              type="email"
+              fullWidth
+              helperText={
+                !isEmailValid && "Please enter a valid email address."
+              }
+              error={!isEmailValid}
+              value={email}
+              onChange={handleEmailChange}
+            />
+            <TextField
+              margin="dense"
+              id="rate"
+              label="Rate (in $)"
+              type="number"
+              fullWidth
+            />
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleModalClose} color="primary">
+              Cancel
+            </Button>
+            <Button onClick={handleModalClose} color="primary">
+              Add
+            </Button>
+          </DialogActions>
+        </Dialog>
       </Container>
 
       <Popover

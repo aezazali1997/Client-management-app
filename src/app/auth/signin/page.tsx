@@ -4,6 +4,22 @@ import Link from "next/link";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEyeSlash, faEye } from "@fortawesome/free-solid-svg-icons";
+import {
+  CognitoUser,
+  AuthenticationDetails,
+  CognitoUserPool,
+} from "amazon-cognito-identity-js";
+
+const USER_POOL_ID = "YOUR_USER_POOL_ID";
+const CLIENT_ID = "YOUR_APP_CLIENT_ID";
+
+const poolData = {
+  UserPoolId: USER_POOL_ID,
+  ClientId: CLIENT_ID,
+};
+
+const userPool = new CognitoUserPool(poolData);
+
 const SignIn: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -11,7 +27,28 @@ const SignIn: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log({ email, password });
+
+    const authenticationDetails = new AuthenticationDetails({
+      Username: email,
+      Password: password,
+    });
+
+    const cognitoUser = new CognitoUser({
+      Username: email,
+      Pool: userPool,
+    });
+
+    cognitoUser.authenticateUser(authenticationDetails, {
+      onSuccess: (session) => {
+        console.log("Authentication Successful!", session);
+      },
+      onFailure: (err) => {
+        console.error("Authentication failed", err);
+      },
+      newPasswordRequired: (userAttributes, requiredAttributes) => {
+        console.log("Password change required");
+      },
+    });
   };
 
   return (
